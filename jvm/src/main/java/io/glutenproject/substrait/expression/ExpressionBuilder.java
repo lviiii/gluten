@@ -19,14 +19,7 @@ package io.glutenproject.substrait.expression;
 
 import io.glutenproject.substrait.type.TypeBuilder;
 import io.glutenproject.substrait.type.TypeNode;
-import org.apache.spark.sql.types.DataType;
-import org.apache.spark.sql.types.DateType;
-import org.apache.spark.sql.types.Decimal;
-import org.apache.spark.sql.types.DecimalType;
-import org.apache.spark.sql.types.DoubleType;
-import org.apache.spark.sql.types.IntegerType;
-import org.apache.spark.sql.types.LongType;
-import org.apache.spark.sql.types.StringType;
+import org.apache.spark.sql.types.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,6 +109,12 @@ public class ExpressionBuilder {
         return makeNullLiteral(TypeBuilder.makeFP64(nullable));
       } else {
         return makeDoubleLiteral((Double) obj);
+      }
+    }  else if (dataType instanceof BooleanType) {
+      if (obj == null) {
+        return makeNullLiteral(TypeBuilder.makeBoolean(nullable));
+      } else {
+        return makeBooleanLiteral((Boolean) obj);
       }
     } else if (dataType instanceof DateType) {
       if (obj == null) {
