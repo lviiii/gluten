@@ -34,6 +34,7 @@ object VeloxNotSupport extends NotSupport {
     simpleClassName[DecimalExpressionSuite],
     simpleClassName[StringFunctionsSuite],
     simpleClassName[RegexpExpressionsSuite],
+    simpleClassName[MathExpressionsSuite],
     simpleClassName[PredicateSuite]
   )
 }
